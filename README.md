@@ -15,8 +15,10 @@ fixed deb-package.
 
 Solution
 --------
-- Clone HPCCM
-
+- Install HPCCM
+```bash
+pip install hpccm
+```
 - Convert hpccmrecipe to Dockerfile:
 ```bash
 hpccm --recipe recipe.py --format docker > Dockerfile
@@ -28,6 +30,10 @@ docker build -t test_hpccm -f Dockerfile .
 - Run bash in container:
 ```bash
 docker run --rm -it --entrypoint bash test_hpccm:latest
+```
+- Copy .deb package into container
+```bash
+docker cp ./test1.deb CONTAINER_ID:/test1.deb
 ```
 - Info of .deb package:
 ```bash
